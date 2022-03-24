@@ -1,2 +1,6 @@
 venv/*
 dados.csv
+Classificador de Acessos/buscas.csv
+Classificador de Acessos/buscas2.csv
+/__pycache__
+Classificador de Acessos/__pycache__
