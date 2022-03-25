@@ -13,26 +13,28 @@ def carrega_acessos():
 
 def carrega_busca():
     arq = pd.read_csv('Classificador de Acessos/buscas.csv')
-    # arq = arq[['ruby', 'java', 'algoritmos']]
-    # for i in arq['busca']:
-    #     if i == 'ruby':
-    #         arq['ruby'] == 1
-    #         arq['java'] == 0
-    #         arq['algoritmos'] == 0
-    #     elif i == 'java':
-    #         arq['ruby'] == 0
-    #         arq['java'] == 1
-    #         arq['algoritmos'] == 0
-    #     elif i == 'algoritmos':
-    #         arq['ruby'] == 0
-    #         arq['java'] == 0
-    #         arq['algoritmos'] == 1
-    #     else:
-    #         arq['ruby'] == 0
-    #         arq['java'] == 0
-    #         arq['algoritmos'] == 0
-
-    X = arq[['home', 'logado']]
+    ruby = []
+    java = []
+    algoritmos = []
+    for i in arq['busca']:
+        if i == 'ruby':
+            ruby.append(1)
+            java.append(0)
+            algoritmos.append(0)
+        elif i == 'java':
+            ruby.append(0)
+            java.append(1)
+            algoritmos.append(0)
+        elif i == 'algoritmos':
+            ruby.append(0)
+            java.append(0)
+            algoritmos.append(1)
+        else:
+            ruby.append(0)
+            java.append(0)
+            algoritmos.append(0)
+    arq = arq.assign(ruby=ruby, java=java, algoritmos=algoritmos)
+    X = arq[['home', 'logado', 'ruby', 'java', 'algoritmos']]
     Y = arq['comprou']
 
     return X, Y
