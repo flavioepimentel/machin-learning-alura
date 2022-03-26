@@ -1,6 +1,24 @@
+# ====================================================================================
+# A otimização de um algoritmo apartir dessa ponto de consistir em três etapas básicas:
+#
+# 1 - Treinar os modelos
+#
+# 2 - Comparação de diferentes modelos 
+#         - AdaBoostClassifier
+#         - MultinomialNB
+#         - LinearSVC
+#         - SVC
+#
+# 3 - Testar o modelo com base de dados diferentes e tamanho de amostragens diferentes
+#
+# =====================================================================================
 from classes import carrega_busca
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import MultinomialNB
+# from sklearn.naive_bayes import MultinomialNB
+
+from sklearn.ensemble import AdaBoostClassifier
+modelo = AdaBoostClassifier()
+
 
 X, Y = carrega_busca()
 
@@ -11,7 +29,7 @@ treino_x, teste_x, treino_y, teste_y = train_test_split(
     stratify=Y
 )
 
-modelo = MultinomialNB()
+modelo = AdaBoostClassifier()
 modelo.fit(treino_x, treino_y)
 previsoes = modelo.predict(teste_x)
 
