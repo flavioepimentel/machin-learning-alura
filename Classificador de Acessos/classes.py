@@ -3,8 +3,8 @@ import pandas as pd
 def carrega_acessos():
     X = []
     Y = []
-    arqv = open('dados.csv', 'r')
-    leitor = csv.reader(arqv)
+    arq = open('dados.csv', 'r')
+    leitor = csv.reader(arq)
     for home, como_funciona, contato, comprou in leitor:
         X.append([int(home), int(como_funciona), int(contato)])
         Y.append(int(comprou))
